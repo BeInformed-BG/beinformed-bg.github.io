@@ -11,7 +11,7 @@
       const oobCode = params.get("oobCode");
       if (oobCode) {
         // Отвори приложението
-        window.location.href = `beinformed://reset-password?oobCode=${oobCode}`;
+        window.location.href = `beinformed://forgotPassword?oobCode=${oobCode}`;
 
         // fallback ако приложението не е инсталирано
         setTimeout(() => {
