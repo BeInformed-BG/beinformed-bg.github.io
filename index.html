@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reset Password</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <p>Пренасочване...</p>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const oobCode = params.get("oobCode");
+      if (oobCode) {
+        // Отвори приложението
+        window.location.href = `beinformed://reset-password?oobCode=${oobCode}`;
+
+        // fallback ако приложението не е инсталирано
+        setTimeout(() => {
+          window.location.href = "https://beinformed.bg"; // или линк към App Store
+        }, 2000);
+      } else {
+        document.body.innerHTML = "Невалиден линк.";
+      }
+    </script>
+  </body>
+</html>
