@@ -9,6 +9,9 @@
     <script>
       const params = new URLSearchParams(window.location.search);
       const oobCode = params.get("oobCode");
+
+      console.log(oobCode);
+
       if (oobCode) {
         // Отвори приложението
         window.location.href = `beinformed://forgotPassword?oobCode=${oobCode}`;
