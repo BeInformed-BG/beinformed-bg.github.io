@@ -14,7 +14,9 @@
 
       if (oobCode) {
         // Отвори приложението
-        window.location.href = `beinformed://forgotPassword?oobCode=${oobCode}`;
+        //window.location.href = `beinformed://forgotPassword?oobCode=${oobCode}`;
+
+        window.open(`beinformed://forgotPassword?oobCode=${oobCode}`);
 
         // fallback ако приложението не е инсталирано
         setTimeout(() => {
