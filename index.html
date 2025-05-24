@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Reset Password</title>
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-    <p>Пренасочване...</p>
-    <script>
-      const params = new URLSearchParams(window.location.search);
-      const oobCode = params.get("oobCode");
 
-      console.log(oobCode);
+<head>
+  <title>Reset Password</title>
+  <meta charset="UTF-8" />
+</head>
 
-      if (oobCode) {
-        // Отвори приложението
-        //window.location.href = `beinformed://forgotPassword?oobCode=${oobCode}`;
+<body>
+  <p>Пренасочване...</p>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const oobCode = params.get("oobCode");
+    const mode = params.get("mode");
 
-        window.open(`bg.beinformed.app://forgotPassword?oobCode=${oobCode}`);
+    if (!oobCode || !mode) {
+      document.body.innerHTML = "Невалиден линк.";
+    } else if (mode === "resetPassword") {
+      window.open(`bg.beinformed.app://forgotPassword?oobCode=${oobCode}`);
 
-        // fallback ако приложението не е инсталирано
-        setTimeout(() => {
-          window.location.href = "https://beinformed.bg"; // или линк към App Store
-        }, 10000);
-      } else {
-        document.body.innerHTML = "Невалиден линк.";
-      }
-    </script>
-  </body>
+      // fallback: if app is not installed on the device
+      setTimeout(() => {
+        window.location.href = "https://beinformed.bg"; // or link to App Store
+      }, 10000);
+    } else if (mode === "verifyEmail") {
+      window.location.href = "https://be-informed-app.firebaseapp.com" + window.location.search;
+    } //commit and save command for commit
+  </script>
+</body>
+
 </html>
